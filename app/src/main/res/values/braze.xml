@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string translatable="false" name="com_braze_api_key">8a8b413d-b9f3-45f3-a801-f96781bc10cc</string>
+    <string translatable="false" name="com_braze_custom_endpoint">sdk.fra-02.braze.eu</string>
+    <bool name="com_braze_enable_delayed_initialization">false</bool>
+    <string name="com_braze_delayed_initialization_analytics_behavior">QUEUE</string>
+<!--    <string name="com_braze_delayed_initialization_analytics_behavior">DROP</string>-->
+    <bool name="com_braze_enable_location_collection">true</bool>
+</resources>

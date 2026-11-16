@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "aka.digital.banking_v2",
+  "applicationId": "aka.braze.android",
   "variantName": "release",
   "elements": [
     {

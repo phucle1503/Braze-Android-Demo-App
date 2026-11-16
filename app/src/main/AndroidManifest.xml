@@ -4,13 +4,15 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
-
-    <meta-data
-        android:name="com.appsflyer.FacebookApplicationId"
-        android:value="@string/facebook_application_id" />
-
+    <uses-permission android:name="${applicationId}.CountlyPush.BROADCAST_PERMISSION" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -19,8 +21,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Banking_v2"
-        tools:replace="android:dataExtractionRules,android:fullBackupContent">
-        <activity android:name=".HomeActivity" android:exported="true">
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:usesCleartextTraffic="true" tools:replace="android:dataExtractionRules,android:fullBackupContent">
+
+        <meta-data
+            android:name="com.appsflyer.FacebookApplicationId"
+            android:value="@string/facebook_application_id" />
+
+        <activity android:name=".MainActivity" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <category android:name="android.intent.category.DEFAULT"/>
@@ -34,6 +46,10 @@
                 <data android:scheme="aka" android:host="banking" android:path="/notifications"/>
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ProductDetailActivity"
+            android:exported="false" />
 
         <activity
             android:name=".SignupActivity"
@@ -53,27 +69,22 @@
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-            <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
                 <data
                     android:scheme="aka"
-                    android:host="banking"
-                    android:path="/login" />
+                    android:host="banking_v2"
+                    android:pathPrefix="/login" />
             </intent-filter>
         </activity>
+
         <service
-            android:name="com.appsflyer.FirebaseMessagingServiceListener"
-            android:exported="true">
+            android:name=".MyFirebaseMessagingService"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
     </application>
-
 </manifest>
